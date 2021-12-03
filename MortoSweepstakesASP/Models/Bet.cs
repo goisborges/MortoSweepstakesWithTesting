@@ -29,6 +29,8 @@ namespace MortoSweepstakes.Models
         //when the user placed the bet. Should not be valid if it's placed after the game starts
         public DateTime BetDateTime { get; set; }
 
+        public int MatchId { get; set; }
+
         //Reference the parent table - Matches
         public Match Match { get; set; }
 

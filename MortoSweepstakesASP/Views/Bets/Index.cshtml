@@ -40,8 +40,21 @@
         </tr>
     </thead>
     <tbody>
+
+
+
+
 @foreach (var item in Model) {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Match.MatchId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Match.MatchDateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Match)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.BetTeam1)
             </td>

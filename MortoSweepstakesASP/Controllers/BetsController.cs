@@ -21,7 +21,7 @@ namespace MortoSweepstakes.Controllers
             _context = context;
         }
 
-        [AllowAnonymous]
+        
         // GET: Bets
         public async Task<IActionResult> Index()
         {
