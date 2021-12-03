@@ -33,3 +33,5 @@ Regarding the styling, I am using Bootstrap and my own classes as well.
 For JS, we have Sorttable.js external file added.
 
 To improve the appearance I implemented the use of Font Awesome Icons.
+
+//
