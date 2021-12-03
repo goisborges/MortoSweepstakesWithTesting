@@ -26,7 +26,8 @@ namespace MortoSweepstakes.Controllers
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.Bets.Include(p => p.Match).OrderBy(p => p.BetId);
-            return View(await _context.Bets.ToListAsync());
+            return View(applicationDbContext);
+            //return View(await _context.Bets.ToListAsync());
         }
 
         // GET: Bets/Details/5
@@ -58,7 +59,7 @@ namespace MortoSweepstakes.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("BetId,BetTeam1,BetTeam2,BetPoints,BetDateTime")] Bet bet)
+        public async Task<IActionResult> Create([Bind("BetId,BetTeam1,BetTeam2,BetPoints,BetDateTime, MatchId")] Bet bet)
         {
             if (ModelState.IsValid)
             {

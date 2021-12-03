@@ -47,13 +47,20 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Match.MatchId)
+                @Html.DisplayFor(modelItem => item.Match.Team1)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Match.MatchDateTime)
+                @Html.DisplayFor(modelItem => item.Match.Team2)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Match)
+                @Html.DisplayFor(modelItem => item.Match.ScoreTeam1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Match.ScoreTeam2)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.MatchId)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.BetTeam1)
