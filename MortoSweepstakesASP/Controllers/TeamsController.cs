@@ -54,7 +54,7 @@ namespace MortoSweepstakes.Controllers
         [Authorize(Roles = "Administrator")]
         public IActionResult Create()
         {
-            return View();
+            return View("Create");
         }
 
         // POST: Teams/Create
