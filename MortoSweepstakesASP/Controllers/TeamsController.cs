@@ -70,7 +70,7 @@ namespace MortoSweepstakes.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(team);
+            return View("Create", team);
         }
 
         // GET: Teams/Edit/5
