@@ -1,0 +1,93 @@
+﻿@model IEnumerable<MortoSweepstakes.Models.Team>
+
+@{
+    ViewData["Title"] = "Groups";
+}
+
+<h1>GROUPS</h1>
+<p>Check all team participating and theirs groups.</p>
+
+<p>
+    <a asp-action="Create"><i class="fas fa-plus-circle"></i> Create New</a>
+</p>
+<p class="noteText">The creation tool is for admin only. Easily modify team names and groups and the index page will dynamically show the groups and teams in separate tables for better visualization.</p>
+
+
+<!--Display the teams by groups-->
+
+<!--Try to loop trough letters from A to H-->
+<div class="tables-container">
+    @for(int i = 0; i < 8; i++)
+    {
+        //create an array of chars from A to H representing the groups
+        char[] aToZ = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H' };
+    
+        //while looping from 0 to 7, use i as index of array to retrieve a letter and populate the table
+        //Also, the same letter will be used to retrieve the teamGroup and sort the teams to the correct table
+        <table class="table-striped group-card">
+        <thead>
+            <tr>
+                <th>Group @aToZ[i]</th>
+            </tr>
+        </thead>
+         <tbody>
+        @foreach (var item in Model) {
+            if(item.TeamGroup == aToZ[i]){
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TeamName)
+                    </td>
+
+                    <!-- this column shows the country flag image -->
+                    <td>
+                        
+                        <img width="25" src="/img/flags/@item.TeamName@ViewBag.flagPath" alt="country flag"/>
+
+                    </td>
+                </tr>
+
+    
+            }
+        }
+      </tbody>
+    </table>
+    }
+</div>
+
+
+
+<!--another table that will show all teams and their groups, only for admin to access-->
+@if (User.IsInRole("Administrator")){
+    <table class="table sortable table-striped">
+        <thead>
+            <tr>
+                <th>
+                    <a href="#">Teams</a>
+                   @* @Html.DisplayNameFor(model => model.TeamName)*@
+                </th>
+                <th>
+                    <a href="#">Groups</a>
+                   @* @Html.DisplayNameFor(model => model.TeamGroup)*@
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TeamName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TeamGroup)
+                </td>
+                <td>
+                    <a class="action-links" asp-action="Edit" asp-route-id="@item.TeamId"><i class="fas fa-edit" alt="edit"></i></a> |
+                    <a class="action-links" asp-action="Details" asp-route-id="@item.TeamId"><i class="fas fa-info" alt="info"></i></a> |
+                    <a class="action-links" asp-action="Delete" asp-route-id="@item.TeamId"><i class="fas fa-trash-alt" alt="delete"></i></a>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>
+}
