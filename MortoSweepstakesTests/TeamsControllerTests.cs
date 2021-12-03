@@ -140,5 +140,17 @@ namespace MortoSweepstakesTests
             //assert
             Assert.AreEqual("Details", result.ViewName);
         }
+        #region Create
+        [TestMethod]
+        public void CreateReturnsView()
+        {
+            // act
+            var result = (ViewResult)controller.Create();
+
+
+            //assert
+            Assert.AreEqual("Create", result.ViewName);
+        }
+        #endregion
     }
 }
