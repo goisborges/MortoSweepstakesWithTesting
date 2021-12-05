@@ -62,6 +62,8 @@ namespace MortoSweepstakesTests
             _context.SaveChanges();
         }
 
+        #region Index
+
         //Now the first method checking the Index method of TeamsController
         //checks if it returns a view named "Index"
         [TestMethod]
@@ -96,6 +98,9 @@ namespace MortoSweepstakesTests
             //if need to order results as the controller class does, the code would be like this
             //CollectionAssert.AreEqual(teams.OrderBy(p => p.TeamName).ToList(), model)
         }
+        #endregion
+
+        #region Details
 
         [TestMethod]
         public void DetailsNullIdLoads404()
@@ -140,6 +145,9 @@ namespace MortoSweepstakesTests
             //assert
             Assert.AreEqual("Details", result.ViewName);
         }
+        #endregion
+
+
         #region Create
         [TestMethod]
         public void CreateReturnsView()
